@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Getting started example",
-  "description": "This extension shows a Google Image search result for the current page",
+  "description": "This extension allows a Wikipedia search from within an iFrame overlay on the current page",
   "version": "1.0",
 
   "browser_action": {
@@ -11,10 +11,7 @@
   },
   "permissions": [
     "activeTab",
-    "https://ajax.googleapis.com/",
-    "http://api.riffsy.com/v1/search/",
-    "https://stable.cerego.com/",
-    "tabs",
-    "windows"
+    "http://wikipedia.org/",
+    "tabs"
   ]
 }

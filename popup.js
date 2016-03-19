@@ -100,36 +100,39 @@ function renderStatus(statusText) {
   document.getElementById('status').textContent = statusText;
 }
 
-var highlight = window.getSelection().toString();
-console.log("HIGHLIGHT");
-console.log(highlight);
-window.highlight = highlight;
-
+//var highlight = window.getSelection().toString();
+//console.log("HIGHLIGHT");
+//console.log(highlight);
+//window.highlight = highlight;
 document.addEventListener('DOMContentLoaded', function() {
-  var selection = window.getSelection
-    window.wat = document;
-  getCurrentTabUrl(function(title) {
-    // Put the image URL in Google search.
-    renderStatus('Performing Google Image search for ' + title);
+  document.getElementById('search-button').addEventListener('click', function() {
+    var searchTerm = document.getElementById('search-input').value
 
-    getImageUrl(title, function(imageUrl, width, height) {
+      //var selection = window.getSelection
+    window.wat = searchTerm;
+      //getCurrentTabUrl(function(title) {
+      //  // Put the image URL in Google search.
+      //  renderStatus('Performing Google Image search for ' + title);
+      //
+      //  getImageUrl(title, function(imageUrl, width, height) {
 
-      renderStatus('Search term: ' + title + '\n' +
-          'Google image search result: ' + imageUrl);
-      var imageResult = document.getElementById('image-result');
-      // Explicitly set the width/height to minimize the number of reflows. For
-      // a single image, this does not matter, but if you're going to embed
-      // multiple external images in your page, then the absence of width/height
-      // attributes causes the popup to resize multiple times.
-      imageResult.width = width;
-      imageResult.height = height;
-      //imageResult.src = "https://en.wikipedia.org/wiki/" + title;
-      imageResult.src = "https://stable.cerego.com/sets/740211/items/new?template_type=association_collection"
+          //renderStatus('Search term: ' + title + '\n' +
+          //    'Google image search result: ' + imageUrl);
+    var imageResult = document.getElementById('image-result');
+          // Explicitly set the width/height to minimize the number of reflows. For
+          // a single image, this does not matter, but if you're going to embed
+          // multiple external images in your page, then the absence of width/height
+          // attributes causes the popup to resize multiple times.
+          //imageResult.width = width;
+          //imageResult.height = height;
+          //imageResult.src = "https://en.wikipedia.org/wiki/" + title;
+    var iframe = document.createElement('iframe');
 
-      imageResult.hidden = false;
+    iframe.src = "https://en.wikipedia.org/wiki/Special:Search/" + searchTerm
+    document.body.appendChild(iframe);
 
-    }, function(errorMessage) {
-      renderStatus('Cannot display image. ' + errorMessage);
-    });
+
+      //  }, function(errorMessage) {
+      //    renderStatus('Cannot display image. ' + errorMessage);
   });
 });
